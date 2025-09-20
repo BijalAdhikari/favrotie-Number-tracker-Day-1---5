@@ -1,62 +1,105 @@
-favoriteNumbers = ()
-print("========================================")
-print("========================================")
-print("========================================")
-print("========================================")
-print("Welcome to the favrotie Number tracker!!")
-print("========================================")
-print("========================================")
-print("========================================")
-print("========================================")
+favoritenumbers = []
+print("================================================")
+print("================================================")
+print("Welcome to the favorte number Tracker!!!!!      ")
+print("================================================")
+print("================================================")
 
 def shownum(num):
-    Counter = 0
-    for e in num:
-                print(Counter, ":", e)
-                Counter += 1
+    shownumber = 0
+    for item in num:
+          print(shownumber ,":", item)
+          shownumber =+ 1
 
 
+def showmenu():
+    print("MENU     : ↓ ")
+    print("Add      : 'add'")
+    print("Show     : 'show'")
+    print("Remove   : 'remove'")
+    print("Biggest  : 'biggest'")
+    print("Smallest : 'smallest'")
+    print("Sum      : 'sum'")
+    print("Product  : 'product'")
+    print("Quit     : 'quit'")
 
-def show_menu():
-    print("if you want to add → to add a number type 1 ")
-    print("if you want to show → to show all  numbers type 2 ")
-    print("if you want to remove → to remove a number type 3 ")
-    print(" type 4 to show the biggest number")
-    print("type 5 if you want to see the smallest number ")
-    print("if you want to quit → to quit  type 6 ")
-    print("if you want to sum → to add all of the numbers type 7 ")
-    print("if you want to product → to * all the numbers  type 8 ")
 
-
-
-def add_number():
-    choice = input("pick one: ")
-    if choice == '1':
-       number = int(input("what number: "))
-       favoriteNumbers.append(number)
-       print("you number has been added")
+def add_num():
+    choice = int(input("Give me a number: "))
+    favoritenumbers.append(choice)
 
 def show_number():
-    if len(favoriteNumbers) == 0:
+    if len(favoritenumbers) == 0:
             print("There are no numbers to show you")
     else:
-        shownum(num=favoriteNumbers)
+        shownum(num=favoritenumbers)
 
-def remove_number():
-    if len(favoriteNumbers) == 0:
-            print("There are no numbers to remove")
+def remove_num():
+    if len(favoritenumbers) == 0:
+        print("no numbers to remove")
     else:
-        shownum(num=favoriteNumbers)
-def biggest_numbers(big):
-    if len(favoriteNumbers) == 0:
-          print("no numbers to compare")
-    else:
-         
-            
-        
+        remove = int(input("give me a number to remove"))
+        shownum(num=favoritenumbers)
+        favoritenumbers.pop(remove)
 
-def smallest_numbers():
-    if len(favoriteNumbers) == 0:
-          print("no numbers to compare")
+
+def biggest():
+    if len(favoritenumbers) == 0:
+          print("there is no number to compare")
     else:
-         
+        biggest =  favoritenumbers[0]
+        for b in favoritenumbers:
+            if b > biggest:
+                biggest =  b
+        print(f"the biggest number is {biggest}")
+                
+
+    
+def smallest():
+    if len(favoritenumbers) == 0:
+          print("there is no numbeer to compare")
+    else:
+        smallest =  favoritenumbers[0]
+        for b in favoritenumbers:
+            if b < smallest:
+                smallest =  b
+        print(f"the smallest number is {smallest}")
+
+def add_all_num():
+    if  len(favoritenumbers) == 0:
+        print("no num to add")
+    else:
+        total = 0 
+        for a in favoritenumbers:
+            total += a 
+        print(f"the sum is {total}")
+
+
+def mult_all_num():
+    if  len(favoritenumbers) == 0:
+        print("no num to add")
+    else:
+        product = 1 
+        for a in favoritenumbers:
+               product *= a
+        print(f"the product is {product}")
+
+while True:
+    showmenu()
+    question = input("pick one: ")
+    if question == "add":
+        add_num()
+    elif question == "show":
+        show_number()
+    elif question == "remove":
+        remove_num()
+    elif question == "biggest":
+        biggest()
+    elif question == "smallest":
+        smallest()
+    elif question == "sum":
+        add_all_num()
+    elif question == "product":
+        mult_all_num()
+    elif question == "quit":
+        break
